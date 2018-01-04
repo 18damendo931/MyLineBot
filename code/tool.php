@@ -38,7 +38,7 @@ function post($url, $object) {
 function reply($event, $text) {
 	//送信データ作成
 	$object = [
-		'replyToken'=>$event->replyToken, 
+		'replyToken'=>$event->replyToken,
 		'messages'=>[['type'=>'text', 'text'=>$text]]
 	];
 	
@@ -56,4 +56,13 @@ function push($to, $text) {
 	
 	//送信
 	post('push', $object);
+}
+
+//ロード
+function load($file) {
+	//JSON形式のファイル読み込み
+	$json = file_get_contents($file);
+	
+	//JSONからPHPへの変換
+	return json_decode($json);
 }

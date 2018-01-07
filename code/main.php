@@ -1,7 +1,7 @@
 <?php
 
 //(1)Botプログラムの読み込み
-require_once('hello/hello.php');
+require_once('serif/serif.php');
 
 //(2)ログファイルの設定
 define('DEBUG', 'debug.txt');

@@ -1,26 +1,26 @@
 <?php
 
-//(1)Botプログラムの読み込み
+//Botプログラムの読み込み
 require_once('serif/serif.php');
 
-//(2)ログファイルの設定
+//ログファイルの設定
 define('DEBUG', 'debug.txt');
 
-//(3)共通ツールの読み込み
+//共通ツールの読み込み
 require_once('tool.php');
 
-//(4)リクエストの取得
+//リクエストの取得
 $input = file_get_contents('php://input');
 
-//(5)ログファイルへの出力
+//ログファイルへの出力
 debug('input', $input);
 
-//(6)リクエストが空でないことの確認
+//リクエストが空でないことの確認
 if(!empty($input)) {
-	//(7)イベントの取得
+	//イベントの取得
 	$events = json_decode($input)->events;
 	
-	//(8)各イベントに対するBotプログラムの実行
+	//各イベントに対するBotプログラムの実行
 	foreach($events as $event) {
 		bot($event);
 	}

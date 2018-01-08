@@ -5,7 +5,7 @@ function bot($event) {
 	if(empty($event->message->text)) return;
 
 	//応答文の読み込み
-	if (rand(0, 100) > 10) {
+	if (rand(0, 100) > 80) {
 		$text = load('serif/dere.txt');
 	} else {
 		$text = load('serif/thun.txt');

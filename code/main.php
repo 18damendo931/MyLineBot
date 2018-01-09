@@ -2,6 +2,7 @@
 
 //Botプログラムの読み込み
 require_once('serif/serif.php');
+require_once('account/account.php');
 
 //ログファイルの設定
 define('DEBUG', 'debug.txt');
@@ -22,6 +23,10 @@ if(!empty($input)) {
 	
 	//各イベントに対するBotプログラムの実行
 	foreach($events as $event) {
-		bot($event);
+		$res = responseAccount($event);
+		
+		if($res == "") {
+			bot($event);
+		}
 	}
 }

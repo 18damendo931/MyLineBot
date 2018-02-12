@@ -3,6 +3,7 @@
 //Botプログラムの読み込み
 require_once('serif/serif.php');
 require_once('account/account.php');
+require_once('chocolate/chocolate.php');
 
 //ログファイルの設定
 define('DEBUG', 'debug.txt');
@@ -23,10 +24,16 @@ if(!empty($input)) {
 	
 	//各イベントに対するBotプログラムの実行
 	foreach($events as $event) {
-		$res = responseAccount($event);
-		
-		if($res == "") {
-			bot($event);
+		$text = $event->message->text;
+		if($text == "チョコちょうだい") {
+			searchChocolate($event);
+		}
+		else
+		{
+			$res = responseAccount($event);
+			if($res == "") {
+				bot($event);
+			}
 		}
 	}
 }

@@ -46,6 +46,19 @@ function reply($event, $text) {
 	post('reply', $object);
 }
 
+//画像用リプライ
+function reply_image($event, $original, $preview) {
+	$object=[
+		'replyToken'=>$event->replyToken, 
+		'messages'=>[[
+			'type'=>'image', 
+			'originalContentUrl'=>$original, 
+			'previewImageUrl'=>$preview
+		]]
+	];
+	post('reply', $object);
+}
+
 //プッシュ
 function push($to, $text) {
 	//送信データの作成

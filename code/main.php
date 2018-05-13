@@ -4,6 +4,8 @@
 require_once('serif/serif.php');
 require_once('account/account.php');
 require_once('chocolate/chocolate.php');
+//require_once('test/test.php');
+require_once('aclhelp/aclhelp.php');
 
 //ログファイルの設定
 define('DEBUG', 'debug.txt');
@@ -27,9 +29,15 @@ if(!empty($input)) {
 		$text = $event->message->text;
 		if($text == "チョコちょうだい") {
 			searchChocolate($event);
-		}
-		else
-		{
+//		} else if($text == "テスト") {
+//			test($event);
+		} else if($text == "extract") {
+			aclhelp_Extract($event);
+		} else if($text == "summarize") {
+			aclhelp_Summarize($event);
+		} else if($text == "join") {
+			aclhelp_Join($event);
+		} else {
 			$res = responseAccount($event);
 			if($res == "") {
 				bot($event);

@@ -5,11 +5,12 @@ function bot($event) {
 	if(empty($event->message->text)) return;
 
 	//応答文の読み込み
-	if (rand(0, 100) > 80) {
-		$text = load('serif/dere.txt');
-	} else {
-		$text = load('serif/thun.txt');
-	}
+	//if (rand(0, 100) > 80) {
+	//	$text = load('serif/dere.txt');
+	//} else {
+	//	$text = load('serif/thun.txt');
+	//}
+	$text = load('serif/abuse.txt');
 	
 	reply($event, $text[rand(0, count($text)-1)]);
 }
